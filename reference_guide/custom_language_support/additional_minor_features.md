@@ -1,24 +1,23 @@
 ---
 title: Additional Minor Features
 ---
+<!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
 A number of minor features are listed in the following format:
 
----
 _EP: `fully.qualified.extensionPointName`_ - Extension Point Name (must be specified in `plugin.xml`)
 
 _`com.extensionPoint.class`_ _description text_ - Extension Point class/interface to provide functionality
 
 _- Sample 1_ - Sample implementation
 
----
 
 ### Brace Matching
 EP: `com.intellij.lang.braceMatcher`
 
-[`PairedBraceMatcher`](upsource:///platform/lang-api/src/com/intellij/lang/PairedBraceMatcher.java)
+[`PairedBraceMatcher`](upsource:///platform/analysis-api/src/com/intellij/lang/PairedBraceMatcher.java)
 Returns an array of brace pairs (
-[`BracePair`](upsource:///platform/lang-api/src/com/intellij/lang/BracePair.java)
+[`BracePair`](upsource:///platform/analysis-api/src/com/intellij/lang/BracePair.java)
 ) specifying the characters for the opening and closing braces and the lexer token types for these characters.
 (In principle, it is possible to return multi-character tokens, like "begin" and "end", as the start and end tokens of a brace pair.
 The IDE will match such braces, but the highlighting for such braces will not be fully correct.)

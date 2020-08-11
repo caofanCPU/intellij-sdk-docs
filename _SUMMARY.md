@@ -1,6 +1,6 @@
-# Summary
+## Summary
 
-* [Introduction](welcome.md)
+* [Introduction](intro/welcome.md)
 * [The IntelliJ Platform](intro/intellij_platform.md)
     * [Contributing to the IntelliJ Platform](basics/platform_contributions.md)
     * [IntelliJ Platform Coding Guidelines](basics/intellij_coding_guidelines.md)
@@ -11,12 +11,14 @@
       * [SDK Code Sample Guidelines](intro/sdk_code_guidelines.md)
     * [Code of Conduct](CODE_OF_CONDUCT.md)
 * [Getting Help](intro/getting_help.md)
-* [Recently Updated](recently_updated.md)
+* [Content Updates](intro/content_updates.md)
+    * [Recently Updated](recently_updated.md)
 
 ## Part I - Plugins
-* [Introduction](basics.md)
-    * [Types of Plugins](basics/types_of_plugins.md)
-* [Getting Started](basics/getting_started.md)
+* [Quick Start Guide](basics/basics.md)
+    * [Main Types of Plugins](basics/types_of_plugins.md)
+* [Creating Your First Plugin](basics/getting_started.md)
+    * [Using GitHub Template](tutorials/github_template.md)
     * [Using Gradle](tutorials/build_system.md)
         * [Getting Started with Gradle](tutorials/build_system/prerequisites.md)
         * [Configuring Gradle Projects](tutorials/build_system/gradle_guide.md)
@@ -48,15 +50,15 @@
     * [Enabling Internal Mode](reference_guide/internal_actions/enabling_internal.md)
     * [Internal Actions](reference_guide/internal_actions/interal_actions_menu.md)
     * [UI Tools](reference_guide/internal_actions/internal_ui_sub.md)
-    * [UI Inspector](reference_guide/internal_actions/internal_uii.md)
-    * [Laf Defaults](reference_guide/internal_actions/internal_ui_lafd.md)
+        * [UI Inspector](reference_guide/internal_actions/internal_ui_inspector.md)
+        * [LaF Defaults](reference_guide/internal_actions/internal_ui_laf_defaults.md)
 * [Optimizing Performance](reference_guide/performance/performance.md)
-* [Plugin Development FAQ](faq.md)
+* [Plugin Development FAQ](basics/faq.md)
 
 ## Part II - Base Platform
 * [Fundamentals](platform/fundamentals.md)
     * Component Model
-    * Disposers
+    * [Disposer and Disposable](basics/disposers.md)
     * [Threading](basics/architectural_overview/general_threading_rules.md)
         * Background Tasks
     * [Messaging Infrastructure](reference_guide/messaging_infrastructure.md)
@@ -73,6 +75,7 @@
     * [Icons and Images](reference_guide/work_with_icons_and_images.md)
     * [Color Scheme Management](reference_guide/color_scheme_management.md)
     * [Kotlin UI DSL](user_interface_components/kotlin_ui_dsl.md)
+* [JCEF](reference_guide/jcef.md)
 * [UI Themes](reference_guide/ui_themes/themes_intro.md)
     * [Creating UI Themes](reference_guide/ui_themes/themes.md)
     * [Customizing a UI Theme](reference_guide/ui_themes/themes_customize.md)
@@ -82,10 +85,13 @@
     * [Actions Tutorial](tutorials/action_system.md)
         * [Creating Actions](tutorials/action_system/working_with_custom_actions.md)
         * [Grouping Actions](tutorials/action_system/grouping_action.md)
-* Settings
+* [Persistence](basics/persistence.md)
     * [Persisting State of Components](basics/persisting_state_of_components.md)
     * [Persisting Sensitive Data](basics/persisting_sensitive_data.md)
-    * Editing Settings
+* [Settings](basics/settings.md)
+  * [Settings Guide](reference_guide/settings_guide.md)
+  * [Custom Groups](reference_guide/settings_groups.md)
+  * [Settings Tutorial](tutorials/settings_tutorial.md)
 * [Files](basics/architectural_overview/files.md)
     * [Virtual File System](basics/virtual_file_system.md)
     * [Virtual Files](basics/architectural_overview/virtual_file.md)
@@ -122,7 +128,7 @@
 * [External System Integration](reference_guide/frameworks_and_external_apis/external_system_integration.md)
 
 ## Part IV - PSI
-* [What is the PSI?](basics/architectural_overview/psi.md)
+* [What Is the PSI?](basics/architectural_overview/psi.md)
 * [PSI Files](basics/architectural_overview/psi_files.md)
 * [File View Providers](basics/architectural_overview/file_view_providers.md)
 * [PSI Elements](basics/architectural_overview/psi_elements.md)
@@ -131,7 +137,7 @@
 * [Modifying the PSI](basics/architectural_overview/modifying_psi.md)
 * [PSI Cookbook](basics/psi_cookbook.md)
 * [Indexing and PSI Stubs](basics/indexing_and_psi_stubs.md)
-    * [File-based indexes](basics/indexing_and_psi_stubs/file_based_indexes.md)
+    * [File-Based Indexes](basics/indexing_and_psi_stubs/file_based_indexes.md)
     * [Stub Indexes](basics/indexing_and_psi_stubs/stub_indexes.md)
 * Element Patterns
 * Unified AST
@@ -140,16 +146,17 @@
 ## Part V - Features
 * Navigation
     * Go To Symbol
-* Editing
+* [Editing](basics/editing.md)
     * Code Completion
-    * Templates
+    * [Templates](basics/templates.md)
         * [Live Templates](tutorials/live_templates.md)
-            * [1. Adding Live Template Support](tutorials/live_templates/template_support.md)
+            * [Adding Live Templates to a Plugin](tutorials/live_templates/template_support.md)
+            * [Creating New Functions for Live Templates](tutorials/live_templates/new_macros.md)
+            * Surround Templates
         * File Templates
-        * Surround Templates
     * QuickDoc
     * [Intentions](tutorials/code_intentions.md)
-* Analysing
+* [Analysing](basics/analyzing.md)
     * Annotator
     * [Inspections](tutorials/code_inspections.md)
         * Profiles
@@ -157,7 +164,7 @@
         * Suppressing Highlights
         * Structural Search
 * Refactoring
-* Project View
+* [Project View](basics/project_view.md)
     * [Modifying Project View Structure](tutorials/tree_structure_view.md)
 * Unit Testing
 * [Build System](reference_guide/project_model/build_system.md)
@@ -232,15 +239,16 @@
 * [Developing for Multiple Products](products/dev_alternate_products.md)
 * [Compatibility with Multiple Products](basics/getting_started/plugin_compatibility.md)
 * [Android Studio](products/android_studio.md)
-* AppCode
+* [AppCode](products/app_code.md)
 * [CLion](products/clion.md)
-* DataGrip
+* [DataGrip](products/data_grip.md)
 * [GoLand](products/goland.md)
 * [IntelliJ IDEA](products/idea.md)
     * [Tomcat Integration](reference_guide/tomcat_integration.md)
     * [Spring API](reference_guide/frameworks_and_external_apis/spring_api.md)
 * [PhpStorm](products/phpstorm/phpstorm.md)
     * [Working with the PHP Open API](products/phpstorm/php_open_api.md)
+        * [Breaking Changes](products/phpstorm/php_open_api_breaking_changes.md)
     * [Existing Third Party Plugins](products/phpstorm/existing_plugins.md)
 * [PyCharm](products/pycharm.md)
 * [Rider](products/rider.md)
@@ -252,10 +260,11 @@
 * Licensing
 
 ## Part X - Plugin Repository \[moved]
-* [Overview](plugin_repository/index.md)
+* [Overview](appendix/plugin_repository_obsolete.md)
 
 ## Appendix I - Resources
 
+* [Glossary](appendix/glossary.md)
 * [Useful Links](appendix/resources/useful_links.md)
 * [Consulting](appendix/resources/consulting.md)
 

@@ -1,6 +1,7 @@
 ---
 title: Code Formatter
 ---
+<!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
 The IntelliJ Platform includes a powerful framework for implementing custom language formatters.
 In this framework, the plugin specifies the *constraints* on the spacing between different syntax elements, and the formatting engine, provided by the IDE, calculates the smallest number of whitespace modifications that need to be performed on the file to make it match the constraints.
@@ -61,12 +62,18 @@ If the block before the cursor is incomplete (contains elements that the user wi
 **New in IntelliJ IDEA 13**:
 Code formatting can be suppressed per region via [special comments](https://youtrack.jetbrains.com/issue/IDEA-56995#comment=27-605969).
 
+**Example**:
+[Custom Language Support Tutorial: Formatter](/tutorials/custom_language_support/formatter.md)
+
 ### Code Style Settings
 
 To specify the default indent size for the language provided by your plugin, and to allow the user to configure the tab size and indent size you need to implement the
 [`FileTypeIndentOptionsProvider`](upsource:///platform/lang-api/src/com/intellij/psi/codeStyle/FileTypeIndentOptionsProvider.java)
 interface and to register the implementation in the `com.intellij.fileTypeIndentOptionsProvider` extension point.
 The return value of `createIndentOptions()` determines the default indent size.
+
+**Example**:
+[Custom Language Support Tutorial: Code Style Settings](/tutorials/custom_language_support/code_style_settings.md)
 
 ### Rearranger
 

@@ -1,17 +1,15 @@
 ---
 title: Notifications
 ---
-
-
-## Notifications
+<!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
 One of the leading design principles is avoiding the use of modal message boxes for notifying the user about errors and other situations that may warrant the user's attention.
 As a replacement, the *IntelliJ Platform* provides multiple non-modal notification UI options.
 
 ### Dialogs
 
-When working in a modal dialog, instead of checking the validity of the input when the `OK` button is pressed and notifying the user about invalid data with a modal dialog, the recommended approach is to use
-[`DialogBuilder.doValidate()`](upsource:///platform/platform-api/src/com/intellij/openapi/ui/DialogBuilder.java),
+When working in dialog, instead of checking the validity of the input when the _OK_ button is pressed and notifying the user about invalid data with a modal dialog, the recommended approach is to use
+[`DialogWrapper.doValidate()`](upsource:///platform/platform-api/src/com/intellij/openapi/ui/DialogWrapper.java),
 which was described previously.
 
 ### Editor Hints
@@ -42,13 +40,43 @@ If the current Project is known, please use overload with `Project` parameter, s
 
 The text of the notification can include HTML tags.
 
-Use `Notification#addAction(AnAction)` to add links below the content, use [`NotificationAction`](upsource:///platform/platform-api/src/com/intellij/notification/NotificationAction.java) for convenience. 
+Use `Notification.addAction(AnAction)` to add links below the content, use [`NotificationAction`](upsource:///platform/platform-api/src/com/intellij/notification/NotificationAction.java) for convenience. 
 
 The `groupDisplayId` parameter of the
 [`Notification`](upsource:///platform/platform-api/src/com/intellij/notification/Notification.java)
 constructor specifies a notification type.
 The user can choose the display type corresponding to each notification type under `Settings | Appearance and Behavior | Notifications`.
-To specify the preferred display type, you need to call
-[`Notifications.Bus.register()`](upsource:///platform/platform-api/src/com/intellij/notification/Notifications.java)
-before displaying any notifications.
+To specify the preferred display type, you need to use
+[`NotificationGroup`](upsource:///platform/platform-api/src/com/intellij/notification/NotificationGroup.kt) 
+to create notifications.
 
+#### Example
+
+Simple use of notifications using
+[`NotificationGroup`](upsource:///platform/platform-api/src/com/intellij/notification/NotificationGroup.kt).
+
+```java
+public class MyGroovyDSLErrorsNotifier {
+  private final NotificationGroup NOTIFICATION_GROUP = 
+          new NotificationGroup("Groovy DSL errors", NotificationDisplayType.BALLOON, true);
+
+  public Notification notify(String content) {
+    return notify(null, content);
+  }
+
+  public Notification notify(Project project, String content) {
+    final Notification notification = NOTIFICATION_GROUP.createNotification(content, NotificationType.ERROR);
+    notification.notify(project);
+    return notification;
+  }
+}
+```
+
+Usage of the class with
+[`NotificationGroup`](upsource:///platform/platform-api/src/com/intellij/notification/NotificationGroup.kt)
+above.
+
+```java
+MyGroovyDSLErrorsNotifier myGroovyDSLErrorsNotifier = new MyGroovyDSLErrorsNotifier();
+myGroovyDSLErrorsNotifier.notify("Some Groovy DSL error text");
+```

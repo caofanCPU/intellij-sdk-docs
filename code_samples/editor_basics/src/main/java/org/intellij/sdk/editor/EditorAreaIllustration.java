@@ -1,14 +1,14 @@
-// Copyright 2000-2019 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+// Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
 
 package org.intellij.sdk.editor;
 
-import com.intellij.openapi.actionSystem.*;
+import com.intellij.openapi.actionSystem.AnAction;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.editor.*;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
 
 /**
  * If conditions support it, makes a menu visible to display information
@@ -34,10 +34,9 @@ public class EditorAreaIllustration extends AnAction {
     VisualPosition visualPos = primaryCaret.getVisualPosition();
     int caretOffset = primaryCaret.getOffset();
     // Build and display the caret report.
-    StringBuilder report = new StringBuilder(logicalPos.toString() + "\n");
-    report.append(visualPos.toString() + "\n");
-    report.append("Offset: " + caretOffset);
-    Messages.showInfoMessage(report.toString(), "Caret Parameters Inside The Editor");
+    String report = logicalPos.toString() + "\n" + visualPos.toString() + "\n" +
+            "Offset: " + caretOffset;
+    Messages.showInfoMessage(report, "Caret Parameters Inside The Editor");
   }
   
   /**

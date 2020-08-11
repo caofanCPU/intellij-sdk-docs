@@ -1,6 +1,7 @@
 ---
 title: IntelliJ Platform Artifacts Repositories
 ---
+<!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
 > **WARNING** When using additional repositories, make sure to use HTTPS always.
 
@@ -89,6 +90,7 @@ There are two parts to the example: the repository and the dependency sections.
 ### Repositories Section  
 This code snippet selects the release repository with the first URL, and repository of IntelliJ Platform dependencies with the second URL.
 The second URL is needed because this example selects individual modules. 
+
 ```groovy
 repositories {
 	maven { url "https://www.jetbrains.com/intellij-repository/releases" }
@@ -98,12 +100,14 @@ repositories {
 
 ### Dependencies Section  
 This code snippet specifies the desired module artifacts.
+
 ```groovy
 dependencies {
 	compile "com.jetbrains.intellij.platform:jps-model-serialization:182.2949.4"
 	compile "com.jetbrains.intellij.platform:jps-model-impl:182.2949.4"
 }
 ```
+
 Note:
  * The artifact version (`182.2949.4`) must match in both statements.
  * In this example `jps-model-serialization` declares the APIs and `jps-model-impl` provides the implementation, so both

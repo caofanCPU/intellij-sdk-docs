@@ -1,63 +1,58 @@
 ---
 title: 7. Annotator
 ---
+<!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
-Annotator helps highlight and annotate any code based on specific rules.
+An `Annotator` helps highlight and annotate any code based on specific rules.
+This section adds annotation functionality to support the Simple Language in the context of Java code.
 
-### 7.1. Define an annotator
+**Reference**: [Annotator](/reference_guide/custom_language_support/syntax_highlighting_and_error_highlighting.md#annotator) 
 
-In this tutorial we will annotate usages of our properties within Java code.
-Let's consider a literal which starts with *"simple:"* as a usage of our property.
+* bullet list
+{:toc} 
 
-```java
-package com.simpleplugin;
+## Required Project Configuration Changes
+Classes defined in this step of the tutorial depend on `com.intellij.psi.PsiLiteralExpression` at runtime.
+Using `PsiLiteralExpression` [introduces a dependency](/basics/getting_started/plugin_compatibility.md#modules-specific-to-functionality) on `com.intellij.modules.java`.
+Beginning in version 2019.2 of the IntelliJ Platform these dependencies are declared in `plugin.xml`:
 
-import com.intellij.lang.annotation.*;
-import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.TextRange;
-import com.intellij.psi.*;
-import com.simpleplugin.psi.SimpleProperty;
-import org.jetbrains.annotations.NotNull;
+```xml
+  <depends>com.intellij.modules.java</depends>
+```
 
-import java.util.List;
+The dependency is also declared in the `build.gradle` file:
 
-public class SimpleAnnotator implements Annotator {
-  @Override
-  public void annotate(@NotNull final PsiElement element, @NotNull AnnotationHolder holder) {
-    if (element instanceof PsiLiteralExpression) {
-      PsiLiteralExpression literalExpression = (PsiLiteralExpression) element;
-      String value = literalExpression.getValue() instanceof String ? (String) literalExpression.getValue() : null;
-
-      if (value != null && value.startsWith("simple" + ":")) {
-        Project project = element.getProject();
-        String key = value.substring(7);
-        List<SimpleProperty> properties = SimpleUtil.findProperties(project, key);
-        if (properties.size() == 1) {
-          TextRange range = new TextRange(element.getTextRange().getStartOffset() + 8,
-                                          element.getTextRange().getEndOffset() - 1);
-          Annotation annotation = holder.createInfoAnnotation(range, null);
-          annotation.setTextAttributes(DefaultLanguageHighlighterColors.LINE_COMMENT);
-        } else if (properties.size() == 0) {
-          TextRange range = new TextRange(element.getTextRange().getStartOffset() + 8,
-                                          element.getTextRange().getEndOffset() - 1);
-          holder.createErrorAnnotation(range, "Unresolved property");
-        }
-      }
-    }
-  }
+```groovy
+intellij {
+  plugins = ['java']
 }
 ```
 
-### 7.2. Register the annotator
+## 7.1. Define an Annotator
+The `SimpleAnnotator` subclasses [`Annotator`](upsource:///platform/analysis-api/src/com/intellij/lang/annotation/Annotator.java).
+Consider a literal string that starts with "simple:" as a prefix of a Simple Language key.
+It isn't part of the Simple Language, but it is a useful convention for detecting Simple Language keys embedded as string literals in other languages, like Java.
+Annotate the `simple:key` literal expression, and differentiate between a well-formed vs. an unresolved property.
 
-```xml
-<annotator language="JAVA" implementationClass="com.simpleplugin.SimpleAnnotator"/>
+> **NOTE** The use of new `AnnotationHolder` syntax starting 2020.2, which uses the builder format. 
+
+```java
+{% include /code_samples/simple_language_plugin/src/main/java/org/intellij/sdk/language/SimpleAnnotator.java %}
 ```
 
-### 7.3. Run the project
+> **TIP** If the above code is copied at this stage of the tutorial, then remove the line below the comment "** Tutorial step 18.3 …" The quick fix class in that line is not defined until later in the tutorial.
 
-Let's define the following Java file and check if the IDE resolves a property.
+## 7.2. Register the Annotator
+Using the `com.intellij.annotator` extension point in the plugin configuration file, register the Simple Language annotator class with the IntelliJ Platform:
+
+```xml
+  <extensions defaultExtensionNs="com.intellij">
+    <annotator language="JAVA" implementationClass="org.intellij.sdk.language.SimpleAnnotator"/>
+  </extensions>
+```
+
+## 7.3. Run the Project
+As a test, define the following Java file containing a Simple Language `prefix:value` pair:
 
 ```java
 public class Test {
@@ -67,9 +62,12 @@ public class Test {
 }
 ```
 
-![Annotator](img/annotator.png)
+Open this Java file in an IDE Development Instance running the `simple_language_plugin` to check if the IDE resolves a property: 
 
-If we type an undefined property name, it will annotate the code with a error.
+![Annotator](img/annotator.png){:width="800px"}
 
-![Unresolved property](img/unresolved_property.png)
+If the property is an undefined name, the annotator flags the code with an error.
 
+![Unresolved property](img/unresolved_property.png){:width="800px"}
+
+Try changing the Simple Language [color settings](/tutorials/custom_language_support/syntax_highlighter_and_color_settings_page.md#run-the-project-1) to differentiate the annotation from the default language color settings.

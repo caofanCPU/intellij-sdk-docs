@@ -1,6 +1,7 @@
 ---
 title: What is the IntelliJ Platform?
 ---
+<!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
 The _IntelliJ Platform_ is not a product in and of itself but provides a platform for building IDEs. It is used to power JetBrains products such as [IntelliJ IDEA](https://www.jetbrains.com/idea/). It is also Open Source and can be used by third parties to build IDEs, such as [Android Studio](https://developer.android.com/studio/index.html) from Google.
 
@@ -17,9 +18,9 @@ The IntelliJ Platform includes parsers and a PSI model for a number of languages
 
 ## Plugins
 
-Products built on the IntelliJ Platform are extensible applications, with the platform being responsible for the creation of components, and the injection of dependencies into classes. The IntelliJ Platform fully supports plugins, and JetBrains hosts a [plugin repository](https://plugins.jetbrains.com) that can be used to distribute plugins that support one or more of the products. It is also possible to host your own repositories, and distribute plugins separately.
+Products built on the IntelliJ Platform are extensible applications, with the platform being responsible for the creation of components, and the injection of dependencies into classes. The IntelliJ Platform fully supports plugins, and JetBrains hosts [JetBrains Plugin Repository](https://plugins.jetbrains.com) that can be used to distribute plugins that support one or more of the products. It is also possible to host your own repositories, and distribute plugins separately.
 
-Plugins can extend the platform in lots of ways, from adding a simple menu item to adding support for a complete language, build system and debugger. A lot of the existing functionality in the IntelliJ Platform is written as plugins that can be included or excluded depending on the needs of the end product. See the [Quick Start Guide](/basics.md) for more details.
+Plugins can extend the platform in lots of ways, from adding a simple menu item to adding support for a complete language, build system and debugger. A lot of the existing functionality in the IntelliJ Platform is written as plugins that can be included or excluded depending on the needs of the end product. See the [Quick Start Guide](/basics/basics.md) for more details.
 
 The IntelliJ Platform is a JVM application, written mostly in Java and Kotlin. You should be experienced with these languages, large libraries written in them, their associated tooling, and large open source projects to write plugins for products based on the IntelliJ Platform. At this time, it's not possible to extend the IntelliJ Platform in non-JVM languages.
 
@@ -30,7 +31,7 @@ The IntelliJ Platform is Open Source, under the [Apache license](upsource:///LIC
 While this guide refers to the IntelliJ Platform as a separate entity, there is no "IntelliJ Platform" GitHub repo. Instead, the platform is considered to be an almost complete overlap with the IntelliJ IDEA Community Edition, which is a free and Open Source version of IntelliJ IDEA Ultimate (the GitHub repo linked above is the [JetBrains/intellij-community](https://github.com/JetBrains/intellij-community) repo).
 
 The version of the IntelliJ Platform is defined by the version of the corresponding release of IntelliJ IDEA Community Edition. 
-For example, to build a plugin against IntelliJ IDEA (v2019.1.1,) build #191.6707.61, means specifying the same build number tag to get the correct Intellij Platform files from the `intellij-community` repo. 
+For example, to build a plugin against IntelliJ IDEA (2019.1.1,) build #191.6707.61, means specifying the same build number tag to get the correct Intellij Platform files from the `intellij-community` repo. 
 See the [build number ranges](/basics/getting_started/build_number_ranges.md) page for more information about build numbers corresponding to version numbering.
 
 Typically, an IDE that is based on the IntelliJ Platform will include the `intellij-community` repo as a Git submodule and provide configuration to describe which plugins from the `intellij-community`, and which custom plugins will make up the product. This is how the IDEA Ultimate team work, and they contribute code to both the custom plugins and the IntelliJ Platform itself.
@@ -56,7 +57,6 @@ The following IDEs are based on the IntelliJ Platform:
 * [Android Studio](https://developer.android.com/studio/index.html) IDE from Google.
 * [Comma](https://commaide.com/) IDE for Raku (formerly known as Perl 6)
 * [CUBA Studio](https://www.cuba-platform.com/)
-* [Cursive](https://cursive-ide.com/) IDE for Clojure 
 
 #### Rider
 JetBrains [Rider](https://www.jetbrains.com/rider/) uses the IntelliJ Platform differently than other IntelliJ based IDEs. It uses the IntelliJ Platform to provide the user interface for a C# and .NET IDE, with the standard IntelliJ editors, tool windows, debugging experience and so on. It also integrates into the standard Find Usages and Search Everywhere UI, and makes use of code completion, syntax highlighting, and so on.

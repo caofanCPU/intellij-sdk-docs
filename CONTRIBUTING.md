@@ -1,6 +1,7 @@
 ---
 title: Contributing to the IntelliJ Platform SDK
 ---
+<!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
 This document describes our contribution guidelines for the open source IntelliJ Platform SDK documentation and sample code.
 Before you begin contributing content to the SDK, please read this page thoroughly as well as the [Code of Conduct](/CODE_OF_CONDUCT.md) and [License](https://github.com/JetBrains/intellij-sdk-docs/blob/master/LICENSE.txt) documents.
@@ -61,7 +62,7 @@ macOS comes with Ruby already installed. The only steps required are:
 
 #### Windows
 
-* Install [Ruby 2](https://rubyinstaller.org) and the [Ruby 2 DevKit](http://rubyinstaller.org/downloads/) (one of the gems needs to build a native component)
+* Install [Ruby 2](https://rubyinstaller.org) and the [Ruby 2 DevKit](https://rubyinstaller.org/downloads/) (one of the gems needs to build a native component)
     * After installing the DevKit, make sure to edit the `config.yml` file to point to the Ruby installation
 
 This installation is easier if you use [Chocolatey](https://chocolatey.org), a package manager for Windows:

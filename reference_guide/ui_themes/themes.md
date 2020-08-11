@@ -1,6 +1,7 @@
 ---
 title: Creating Custom UI Themes
 ---
+<!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
 Creating a custom UI Theme is a process of choosing a base IDE Theme (_Light_ or _Darcula_,) then changing aspects of the base Theme definition. 
 Custom UI Themes can:
@@ -64,6 +65,7 @@ For the SDK code sample `theme_basics` the box is _unchecked_.
 Clicking the _OK_ button creates a default Theme description file named `[themeName].theme.json` in the plugin project's `resources` folder. 
 In this example, the file is named `theme_basics.theme.json`. 
 The content of the default file is a short set of key–value pairs:  
+
 ```json
 {
  "name": "theme_basics",
@@ -83,11 +85,13 @@ The `ui` section will be addressed in [Customizing UI Control Colors](themes_cus
 
 The Wizard also creates a `themeProvider` declaration in the `<extensions>` section of the plugin's `plugin.xml` file. 
 This declaration binds the Theme description file to a theme provider extension using a generated unique `id`.
+
 ```xml
   <extensions defaultExtensionNs="com.intellij">
     <themeProvider id="eb9b7461-397b-4b98-a422-224fc0a74564" path="/theme_basics.theme.json"/>
   </extensions>
 ```
+
 > **WARNING** Do not modify or re-use an existing value of the generated `id` attribute.
 
 At this point, the UI Theme `theme_basics` is a valid UI Theme. 

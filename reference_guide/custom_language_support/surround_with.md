@@ -1,6 +1,7 @@
 ---
 title: Surround With
 ---
+<!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
 To support the _Surround With_ action, the plugin needs to register one or more implementations of the
 [`SurroundDescriptor`](upsource:///platform/lang-api/src/com/intellij/lang/surroundWith/SurroundDescriptor.java)
@@ -12,10 +13,10 @@ objects, defining specific templates which can be used for surrounding the selec
 
 When the _Surround With_ action is invoked, the IDE queries all surround descriptors for the language until it finds one that returns a non-empty array from its `getElementsToSurround()` method.
 Then it calls the
-[`Surrounder.isApplicable()`](upsource:///platform/lang-api/src/com/intellij/lang/surroundWith/Surrounder.java)<!--#L46-->
+[`Surrounder.isApplicable()`](upsource:///platform/lang-api/src/com/intellij/lang/surroundWith/Surrounder.java)
 method for each surrounder in that descriptor to check if the specific template is applicable in the current context.
 Once the user selects a specific surrounder from the popup menu, the
-[`Surrounder.surroundElements()`](upsource:///platform/lang-api/src/com/intellij/lang/surroundWith/Surrounder.java)<!--#L57-->
+[`Surrounder.surroundElements()`](upsource:///platform/lang-api/src/com/intellij/lang/surroundWith/Surrounder.java)
 method is used to execute the surround action.
 
 **Example:**

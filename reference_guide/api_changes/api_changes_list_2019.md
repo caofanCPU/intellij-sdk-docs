@@ -1,6 +1,7 @@
 ---
 title: Incompatible Changes in IntelliJ Platform and Plugins API 2019.*
 ---
+<!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
 <!--
 Before documenting a breaking API change, please, make sure that the change cannot be avoided 
@@ -25,6 +26,7 @@ The following problem patterns are supported:
 <class name>.<method name>(<human-readable parameters>) method marked final
 <class name> (class|interface) now (extends|implements) <class name> and inherits its final method <method name>(<human-readable parameters>)?
 <class name> (class|interface) now (extends|implements) <class name> and inherits its abstract method <method name>(<human-readable parameters>)?
+<class name>.<method name> method <parameter name> parameter marked @<class name>
 
 <class name>(<human-readable parameters>) constructor removed
 <class name>(<human-readable parameters>) constructor parameter <type> removed
@@ -35,34 +37,36 @@ The following problem patterns are supported:
 <class name>.<field name> field type changed from <before> to <after>
 <class name>.<field name> field visibility changed from <before> to <after>
 
+<class name>.<method name>(<human-readable parameters>) marked abstract
 <class name>.<method name>(<human-readable parameters>) abstract method added
 <class name> class moved to package <package name>
 
 <property name> property removed from resource bundle <bundle name>
 
-where 
-<class name> is a fully-qualified name of the class, e.g. com.intellij.openapi.actionSystem.AnAction$InnerClass.
+where the placeholders must be enclosed in code quotes (`name`):
+
+<class name> is a fully-qualified name of the class, e.g. `com.intellij.openapi.actionSystem.AnAction$InnerClass`.
 <method name> is the exact method's name. Note that constructors have dedicated patterns.
 <human-readable parameters> is a string representing parameters, which are not necessarily fully qualified. They do not affect the parser. For example, instead of (java.lang.Object, java.util.List, int) you are free to write (Object, List<String>, int)
-<property name> is a full name of a property from .properties file, like "some.action.description"
-<bundle name> is a fully qualified name of the property bundle, which includes its package, like "message.IdeBundle"
+<parameter name> is exact name of the method's parameter
+<property name> is a full name of a property from .properties file, like `some.action.description`
+<bundle name> is a fully qualified name of the property bundle, which includes its package, like `message.IdeBundle`
 
-NOTE: If a change you're trying to document doesn't match any of the above patterns, fill in a ticket in the YouTrack. 
+NOTE: If a code change you're trying to document doesn't match any of the above patterns, fill in a ticket in the YouTrack. 
 An example of a ticket is https://youtrack.jetbrains.com/issue/PR-1218. Until supported, you may document the change as you prefer, and I will correct it later.
 
-NOTE: You are allowed to prettify the pattern using markdown-features:
- 1) code quotes: `org.example.Foo.methodName`
- 2) links [org.example.Foo](https://github.com/JetBrains/intellij-community/tree/master/)
- 3) both code quotes and links: [`org.example.Foo`](https://github.com/JetBrains/intellij-community/tree/master/)
+NOTE: You are allowed to prettify the pattern using links: [`org.example.Foo`](https://github.com/JetBrains/intellij-community/tree/master/)
+
+NOTE: Entries not starting with code quotes (`name`) can be added to document non-code changes and will be skipped in API verification.
 -->
 
 Please see [Incompatible API Changes](/reference_guide/api_changes_list.md) on how to verify compatibility.
 
-> **NOTE** Changes from API marked with [`org.jetbrains.annotations.ApiStatus.@Experimental/ScheduledForRemoval`](upsource:///platform/util/src/org/jetbrains/annotations/ApiStatus.java) are not listed here, as incompatible changes are to be expected.
+> **NOTE** Changes from API marked with `org.jetbrains.annotations.ApiStatus.@Experimental`/`ScheduledForRemoval` are not listed here, as incompatible changes are to be expected.
 
-# 2019.3
+## 2019.3
 
-## Changes in IntelliJ Platform 2019.3
+### Changes in IntelliJ Platform 2019.3
 
 `com.intellij.codeInsight.TailType.getLocalCodeStyleSettings(Editor, int)` method removed
 : Use `com.intellij.psi.codeStyle.CommonCodeStyleSettings.getLocalCodeStyleSettings(Editor, int)` instead.
@@ -103,7 +107,7 @@ Please see [Incompatible API Changes](/reference_guide/api_changes_list.md) on h
 `com.intellij.remoteServer.configuration.deployment.DeploymentConfigurationManager.createAndRunConfiguration(ServerType, RemoteServer)` method removed
 : Use `DeploymentConfigurationManager.createAndRunConfiguration(ServerType, RemoteServer, DeploymentSourceType)` instead. 
 
-### VCS
+#### VCS
 `com.intellij.openapi.vcs.changes.ui.ChangesListView.UNVERSIONED_FILES_DATA_KEY` field removed
 : Use `com.intellij.openapi.vcs.changes.ui.ChangesListView.UNVERSIONED_FILE_PATHS_DATA_KEY` instead.
 
@@ -119,7 +123,7 @@ Please see [Incompatible API Changes](/reference_guide/api_changes_list.md) on h
 `com.intellij.openapi.vcs.VcsVFSListener.myExceptions` field removed
 : Use `com.intellij.openapi.vcs.VcsVFSListener.myProcessor.acquireExceptions()` or `com.intellij.openapi.vcs.VcsVFSListener.myProcessor.addException(VcsException exception)` instead.
 
-### Test Framework
+#### Test Framework
 `com.intellij.testFramework.PlatformTestUtil.registerExtension(ExtensionsArea, T, Disposable)` method removed
 : Use `com.intellij.testFramework.ServiceContainerUtil#registerExtension(BaseExtensionPointName, T, Disposable)` instead.
 
@@ -129,17 +133,17 @@ Please see [Incompatible API Changes](/reference_guide/api_changes_list.md) on h
 `com.intellij.testFramework.fixtures.DefaultLightProjectDescriptor.getModuleType()` method removed
 : Use `com.intellij.testFramework.fixtures.DefaultLightProjectDescriptor.getModuleTypeId()` instead (see `com.intellij.openapi.module.ModuleTypeId`).
 
-## Changes in Java plugin 2019.3
+### Changes in Java Plugin 2019.3
 
 `com.intellij.codeInspection.magicConstant.MagicCompletionContributor.getAllowedValues(PsiElement)` method return type changed from `com.intellij.codeInspection.magicConstant.MagicConstantInspection.AllowedValues` to `com.intellij.codeInspection.magicConstant.MagicConstantUtils.AllowedValues`
 : Use new type instead.
 
-## Changes in Groovy plugin 2019.3
+### Changes in Groovy Plugin 2019.3
 
 `org.jetbrains.plugins.groovy.extensions.GroovyScriptTypeDetector(GroovyScriptType, String[])` constructor removed
 : Use constructor `GroovyScriptTypeDetector(GroovyScriptType)` instead, and `com.intellij.fileType` to register additional extensions.
 
-## Changes in Cucumber plugin 2019.3
+### Changes in Cucumber Plugin 2019.3
 
 `org.jetbrains.plugins.cucumber.javascript.CucumberJavaScriptStepDefinitionCreator#createStepDefinition(GherkinStep, PsiFile)` method removed
 : Use `org.jetbrains.plugins.cucumber.javascript.CucumberJavaScriptStepDefinitionCreator#createStepDefinition(GherkinStep, PsiFile, boolean)` instead. 
@@ -153,7 +157,7 @@ Please see [Incompatible API Changes](/reference_guide/api_changes_list.md) on h
 `org.jetbrains.plugins.cucumber.CucumberJvmExtensionPoint#getGlues()` method removed
 : Java specific method was moved to CucumberJava implementation. 
  
-## Changes in DataGrip and Database Tools plugin 2019.3
+### Changes in DataGrip and Database Tools Plugin 2019.3
 
 `com.intellij.sql.dialects.mssql.MssqlDialect` class renamed to `com.intellij.sql.dialects.mssql.MsDialect`
 : Do not use SQL dialect classes directly.
@@ -164,12 +168,12 @@ Please see [Incompatible API Changes](/reference_guide/api_changes_list.md) on h
 `com.intellij.sql.dialects.postgres.PostgresDialect` class renamed to `com.intellij.sql.dialects.postgres.PgDialect`
 : Do not use SQL dialect classes directly.
 
-## Changes in RubyMine and Ruby plugin 2019.3
+### Changes in RubyMine and Ruby Plugin 2019.3
 
 `org.jetbrains.plugins.ruby.ruby.codeInsight.types.RubyTypeProvider.createTypeBySymbolFromProviders(Symbol symbol, Context context)` method parameter `Context` removed
 : This was done as part of [`RUBY-24760`](https://youtrack.jetbrains.com/issue/RUBY-24760) in order to move to new Context-less approach.
 
-## Changes in PyCharm and Python plugin 2019.3
+### Changes in PyCharm and Python Plugin 2019.3
 
 `com.jetbrains.python.inspections.PythonVisitorFilter` class moved to package `com.jetbrains.python.psi`
 
@@ -192,9 +196,9 @@ Please see [Incompatible API Changes](/reference_guide/api_changes_list.md) on h
 : Use `com.jetbrains.python.PyPsiBundle` instead.
 
 
-# 2019.2 
+## 2019.2 
 
-## Changes in IntelliJ Platform 2019.2
+### Changes in IntelliJ Platform 2019.2
 Constructor injection referring to extension points not supported
 : Obtain reference to extension points via `(Project)ExtensionPointName.findExtension()` in your constructor instead.
 
@@ -245,9 +249,9 @@ Recompile your code to pick up the new signature.
 : Implement method in `RestartableLexer` implementations.
 
 
-# 2019.1
+## 2019.1
  
-## Changes in IntelliJ Platform 2019.1
+### Changes in IntelliJ Platform 2019.1
 
 `kotlinx.coroutines.experimental` package removed 
 : Bundled Kotlin library is updated to 1.3 so the plugins must [migrate](https://blog.jetbrains.com/kotlin/2018/09/kotlin-1-3-rc-is-here-migrate-your-coroutines/) to the stable versions of coroutines.
@@ -270,12 +274,12 @@ Recompile your code to pick up the new signature.
 `com.intellij.openapi.util.KeyedExtensionCollector.getExtensions()` method marked final
 : Remove custom implementation.
 
-## Changes in DataGrip and Database Tools plugin 2019.1
+### Changes in DataGrip and Database Tools Plugin 2019.1
 
 `com.intellij.sql.psi.SqlTokens.SQL_IDENT` field type changed from `com.intellij.sql.psi.impl.SqlTokenType` to `com.intellij.sql.psi.SqlTokenType`
 : In most of the cases, it's enough to recompile the code. It may also be needed to check that the code doesn't rely on the field's type.
 
-## Changes in Kotlin Plugin API 1.3
+### Changes in Kotlin Plugin API 1.3
 
 `org.jetbrains.kotlin.KtNodeTypes.BOOLEAN_CONSTANT` field type changed from `org.jetbrains.kotlin.KtNodeType` to `com.intellij.psi.tree.IElementType`
 : Field type has been generalized. In most of the cases, it's enough to recompile the code of the plugin.

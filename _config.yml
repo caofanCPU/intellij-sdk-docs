@@ -3,16 +3,17 @@ product_name: IntelliJ Platform SDK
 product_version:
 product_type: DevGuide
 
-url: http://www.jetbrains.org
+url: https://www.jetbrains.org
 baseurl: /intellij/sdk/docs/
 
 description: Documentation for working with and extending the IntelliJ Platform SDK
 
-# This is tag 193.5662.53 (2019.3.1)
+# 2020.2.0
 upsource:
   server: upsource.jetbrains.com
   repo: idea-ce
-  commit: 7cf49a16e4e15a18fa2f742635053647ae94abfb
+  commit: f0b3942b49880400994f62c064afd4ef909539eb
+  tag: 202.6397.94
 
 github_repo: JetBrains/intellij-sdk-docs
 youtrack_project: IJSDK

@@ -1,4 +1,6 @@
-package org.intellij.sdk.facet;// Copyright 2000-2019 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+// Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+
+package org.intellij.sdk.facet;
 
 import com.intellij.facet.FacetConfiguration;
 import com.intellij.facet.ui.FacetEditorContext;
@@ -9,10 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Provides a custom implementation of the Configuration class for org.intellij.sdk.facet.DemoFacet.
- *
- * @author Anna Bulenkova
- * @author John Hake
+ * Provides a custom implementation of the Configuration class for {@link DemoFacet}.
  */
 public class DemoFacetConfiguration implements FacetConfiguration, PersistentStateComponent<DemoFacetState> {
 

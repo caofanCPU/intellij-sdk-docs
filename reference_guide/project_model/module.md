@@ -1,6 +1,7 @@
 ---
 title: Module
 ---
+<!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
 A _module_ is a discrete unit of functionality that can be run, tested, and debugged independently. Modules include such things as source code, build scripts, unit tests, deployment descriptors, etc.
 
@@ -100,7 +101,7 @@ String moduleName = module == null ? "Module not found" : module.getName();
 * To get the project module to which the specified [PSI element](/basics/architectural_overview/psi_elements.md) belongs, use the `ModuleUtil.findModuleForPsiElement()` method.
 
 
-### Accessing module roots
+### Accessing Module Roots
 
 Information about module roots can be accessed via [`ModuleRootManager`](upsource:///platform/projectModel-api/src/com/intellij/openapi/roots/ModuleRootManager.java).
 For example, the following snippet shows how to access the content roots of a module:
@@ -109,7 +110,7 @@ For example, the following snippet shows how to access the content roots of a mo
 VirtualFile[] contentRoots = ModuleRootManager.getInstance(module).getContentRoots();
 ```
 
-### Checking belonging to a module source root
+### Checking Belonging to a Module Source Root
 
 To check if a virtual file or directory belongs to a module source root, use the `ProjectFileIndex.getSourceRootForFile()` method. This method returns `null` if the file or directory does not belong to any source root of modules in the project.
 
@@ -117,7 +118,7 @@ To check if a virtual file or directory belongs to a module source root, use the
 VirtualFile moduleSourceRoot = ProjectRootManager.getInstance(project).getFileIndex().getSourceRootForFile(virtualFileOrDirectory);
 ```
 
-## Receiving notifications about module changes
+## Receiving Notifications About Module Changes
 
 To receive notifications about module changes (modules being added, removed or renamed),
 use the [message bus](/reference_guide/messaging_infrastructure.md) and the `ProjectTopics.MODULES` topic:

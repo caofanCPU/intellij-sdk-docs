@@ -1,6 +1,7 @@
 ---
 title: Plugin Logo
 ---
+<!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
 Beginning in version 2019.1, the IntelliJ Platform supports representing a plugin with a logo.
 A _Plugin Logo_ is intended to be a unique representation of a plugin's functionality, technology, or company.
@@ -13,7 +14,7 @@ See [Working with Icons and Images](/reference_guide/work_with_icons_and_images.
 {:toc}
 
 ## Introduction
-Plugin Logos are shown in the [Plugins Repository](https://plugins.jetbrains.com/), and in [MarketPlace](https://plugins.jetbrains.com/marketplace). 
+Plugin Logos are shown in the [JetBrains Plugins Repository](https://plugins.jetbrains.com). 
 They also appear in the Settings/Preferences [Plugin Manager](https://www.jetbrains.com/help/idea/managing-plugins.html) UI in IntelliJ Platform-based IDEs. 
 Whether online or in the product UI, a Plugin Logo helps users to identify a plugin more quickly in a list, as shown below:
 
@@ -28,6 +29,7 @@ For a Plugin Logo to be displayed correctly within an IntelliJ Platform-based ID
 
 ### Plugin Logo Size
 The Plugin Logo should be provided in one size: 40px by 40px. 
+
 A Plugin Logo is displayed in two sizes, and scales automatically in each context:
 * 40px by 40px in the plugins list in the Plugin Manager UI.
 * 80px by 80px in the plugin details screen in the Plugin Manager UI, on the plugin's page in the Plugins Repository, and on MarketPlace.

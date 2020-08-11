@@ -1,4 +1,4 @@
-// Copyright 2000-2019 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+// Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
 
 package org.intellij.sdk.action;
 
@@ -6,12 +6,10 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.editor.Editor;
-import icons.ActionBasicsIcons;
+import icons.SdkIcons;
 
 /**
  * Creates an action group to contain menu actions. See plugin.xml declarations.
- * @author Anna Bulenkova
- * @author jhake
  */
 public class CustomDefaultActionGroup extends DefaultActionGroup {
   
@@ -28,6 +26,6 @@ public class CustomDefaultActionGroup extends DefaultActionGroup {
     Editor editor = event.getData(CommonDataKeys.EDITOR);
     event.getPresentation().setEnabled(editor != null);
     // Take this opportunity to set an icon for the menu entry.
-    event.getPresentation().setIcon(ActionBasicsIcons.Sdk_default_icon);
+    event.getPresentation().setIcon(SdkIcons.Sdk_default_icon);
   }
 }

@@ -1,6 +1,7 @@
 ---
 title: Testing Highlighting
 ---
+<!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
 A common task when writing plugin tests is testing various kinds of highlighting (inspections, annotators, parser error highlighting, etc.). The *IntelliJ Platform* provides a dedicated utility and markup format for this task.
 
@@ -39,7 +40,7 @@ The tag can also have the following optional attributes:
 * `effectType` expected effect type for the highlighting (see [`EffectType`](upsource:///platform/core-api/src/com/intellij/openapi/editor/markup/EffectType.java))
 * `fontType` expected font style for the highlighting (0 - normal, 1 - bold, 2 - italic, 3 - bold italic)
 
-> **Note** *Nested* tags are **supported**: 
+> **NOTE** *Nested* tags are **supported**: 
 >   ```<warning>warning_highlight<info>warning_and_info_highlight</info>warning_highlight</warning>```
 > *Overlapping* tags (annotations) are currently **not supported** in the test framework (but display correctly in the editor, albeit this is not an officially supported scenario): 
 >   ```<warning>warning_highlight<info>warning-and_info_highlight</warning>info_highlight</info>```

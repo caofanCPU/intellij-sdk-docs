@@ -1,6 +1,7 @@
 ---
 title: Implementing a Parser and PSI
 ---
+<!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
 Parsing files in IntelliJ Platform is a two-step process.
 First, an abstract syntax tree (AST) is built, defining the structure of the program.
@@ -10,9 +11,9 @@ class.
 Each AST node has an associated element type
 [`IElementType`](upsource:///platform/core-api/src/com/intellij/psi/tree/IElementType.java)
 instance, and the element types are defined by the language plugin.
-The top-level node of the AST tree for a file needs to have a special element type, implementing the
+The top-level node of the AST tree for a file needs to have a special element type which extends the
 [`IFileElementType`](upsource:///platform/core-api/src/com/intellij/psi/tree/IFileElementType.java)
-interface.
+class.
 
 The AST nodes have a direct mapping to text ranges in the underlying document.
 The bottom-most nodes of the AST match individual tokens returned by the lexer, and higher level nodes match multiple-token fragments.
@@ -117,14 +118,12 @@ Every element which can be renamed or referenced (a class definition, a method d
 interface, with methods `getName()` and `setName()`.
 
 A number of functions which can be used for implementing and using the PSI can be found in the `com.intellij.psi.util` package, and in particular in the
-[`PsiUtil`](upsource:///java/java-psi-api/src/com/intellij/psi/util/PsiUtil.java)
+[`PsiUtilCore`](upsource:///platform/core-api/src/com/intellij/psi/util/PsiUtilCore.java)
 and
 [`PsiTreeUtil`](upsource:///platform/core-api/src/com/intellij/psi/util/PsiTreeUtil.java)
 classes.
 
-A very helpful tool for debugging the PSI implementation is the
-[PsiViewer plugin](https://plugins.jetbrains.com/plugin/227-psiviewer).
-It can show you the structure of the PSI built by your plugin, the properties of every PSI element and highlight its text range.
+> **TIP** A very helpful tool for debugging the PSI implementation is the [PsiViewer plugin](https://plugins.jetbrains.com/plugin/227-psiviewer). It can show you the structure of the PSI built by your plugin, the properties of every PSI element and highlight its text range.
 
 Please see
 [Indexing and PSI Stubs](/basics/indexing_and_psi_stubs.md)

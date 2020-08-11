@@ -1,6 +1,7 @@
 ---
 title: Code Completion
 ---
+<!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
 There are two main types of code completion that can be provided by custom language plugins: reference completion and contributor-based completion.
 
@@ -15,7 +16,7 @@ either on the reference at the caret location or on a dummy reference that would
 This method needs to return an array of objects containing either strings,
 [`PsiElement`](upsource:///platform/core-api/src/com/intellij/psi/PsiElement.java)
 instances or instances of the
-[`LookupElement`](upsource:///platform/lang-api/src/com/intellij/codeInsight/lookup/LookupElement.java)
+[`LookupElement`](upsource:///platform/analysis-api/src/com/intellij/codeInsight/lookup/LookupElement.java)
 class (see [Lookup Items](#lookup-items) below).
 If a
 [`PsiElement`](upsource:///platform/core-api/src/com/intellij/psi/PsiElement.java)
@@ -27,7 +28,7 @@ and a different implementation of
 [`PsiScopeProcessor`](upsource:///platform/core-api/src/com/intellij/psi/scope/PsiScopeProcessor.java)
 which collects all declarations passed to its `processDeclarations()` method and returns them as an array for filling the completion list.
 
-### Contributor-based Completion
+### Contributor-Based Completion
 
 Implementing the
 [`CompletionContributor`](upsource:///platform/analysis-api/src/com/intellij/codeInsight/completion/CompletionContributor.java)
@@ -50,7 +51,7 @@ for completing keywords in MANIFEST.MF files.
 
 
 
-#### Lookup Items
+### Lookup Items
 Items shown in the completion list are represented by instances of the
 [`LookupElement`](upsource:///platform/analysis-api/src/com/intellij/codeInsight/lookup/LookupElement.java)
 interface.

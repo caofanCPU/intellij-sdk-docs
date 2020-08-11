@@ -1,7 +1,7 @@
 ---
 title: Safe Delete Refactoring
 ---
-
+<!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
 The _Safe Delete_ refactoring also builds on the same [Find Usages](find_usages.md) framework as [Rename Refactoring](rename_refactoring.md).
 
@@ -12,7 +12,7 @@ In addition to that, to support _Safe Delete_, a plugin needs to implement two t
    interface, registered in the `com.intellij.lang.refactoringSupport` extension point, and the `isSafeDeleteAvailable()` method, which checks if the _Safe Delete_ refactoring is available for a specific PSI element
 
 *  The
-   [`PsiElement.delete()`](upsource:///platform/core-api/src/com/intellij/psi/PsiElement.java)<!--#L371-->
+   [`PsiElement.delete()`](upsource:///platform/core-api/src/com/intellij/psi/PsiElement.java)
    method for the
    [`PsiElement`](upsource:///platform/core-api/src/com/intellij/psi/PsiElement.java)
    subclasses for which _Safe Delete_ is available.
@@ -20,7 +20,7 @@ In addition to that, to support _Safe Delete_, a plugin needs to implement two t
 
 
 **Example:**
-[`delete()`](upsource:///plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/psi/impl/PropertyImpl.java)<!--#L363-->
+[`delete()`](upsource:///plugins/properties/properties-psi-impl/src/com/intellij/lang/properties/psi/impl/PropertyImpl.java)
 implementation for a Property in 
 [Properties language plugin](upsource:///plugins/properties/)
 

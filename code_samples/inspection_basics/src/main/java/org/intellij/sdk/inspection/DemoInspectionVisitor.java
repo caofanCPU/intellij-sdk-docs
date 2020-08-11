@@ -1,22 +1,20 @@
-// Copyright 2000-2019 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+// Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
 
 package org.intellij.sdk.inspection;
 
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.PsiPlainTextFile;
+import org.jetbrains.annotations.NotNull;
 
-/**
- * @author Anna Bulenkova
- */
 public class DemoInspectionVisitor extends PsiElementVisitor {
   @Override
-  public void visitElement(PsiElement element) {
+  public void visitElement(@NotNull PsiElement element) {
     super.visitElement(element);
   }
 
   @Override
-  public void visitPlainTextFile(PsiPlainTextFile file) {
+  public void visitPlainTextFile(@NotNull PsiPlainTextFile file) {
     super.visitPlainTextFile(file);
   }
 }

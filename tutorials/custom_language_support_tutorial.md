@@ -1,14 +1,15 @@
 ---
 title: Custom Language Support Tutorial
 ---
+<!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
-In this tutorial we will add support for
-[.properties](https://en.wikipedia.org/wiki/.properties)
-language and its usages within Java code.
+In this tutorial we will add support for a [.properties](https://en.wikipedia.org/wiki/.properties) language and its usages within Java code.
 
-The final code can be found in the [SamplePlugin repo on GitHub](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/simple_language_plugin).
-
-This a step-by-step tutorial and it requires performing every step:
+> **TIP** IntelliJ Platform support for custom languages is discussed in more depth in the [Custom Language Support](/reference_guide/custom_language_support.md) section. 
+> Corresponding parts are linked under "Reference" on top of each page in this tutorial.
+ 
+The example plugin used in this tutorial is the [`simple_language_plugin`](https://github.com/JetBrains/intellij-sdk-docs/tree/master/code_samples/simple_language_plugin) code sample.
+This a step-by-step tutorial, and it requires completing each step, in order: 
 
 *  [1. Prerequisites](custom_language_support/prerequisites.md)
 *  [2. Language and File Type](custom_language_support/language_and_filetype.md)

@@ -1,6 +1,7 @@
 ---
 title: Structure View
 ---
+<!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
 The Structure View implementation used for a specific file type can be customized on many levels.
 If a custom language plugin provides an implementation of the
@@ -25,7 +26,7 @@ To reuse the *IntelliJ Platform* implementation of the
 the plugin returns a
 [`TreeBasedStructureViewBuilder`](upsource:///platform/editor-ui-api/src/com/intellij/ide/structureView/TreeBasedStructureViewBuilder.java)
 from its
-[`PsiStructureViewFactory.getStructureViewBuilder()`](upsource:///platform/editor-ui-api/src/com/intellij/lang/PsiStructureViewFactory.java)<!--#L35-->
+[`PsiStructureViewFactory.getStructureViewBuilder()`](upsource:///platform/editor-ui-api/src/com/intellij/lang/PsiStructureViewFactory.java)
 method.
 As the model for the builder, the plugin can specify a subclass of
 [`TextEditorBasedStructureViewModel`](upsource:///platform/editor-ui-api/src/com/intellij/ide/structureView/TextEditorBasedStructureViewModel.java),

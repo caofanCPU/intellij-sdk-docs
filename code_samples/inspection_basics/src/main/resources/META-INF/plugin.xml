@@ -1,16 +1,12 @@
-<!-- Copyright 2000-2019 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
+<!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
 <idea-plugin>
+
   <!--  Unique id for this plugin. Must stay constant for the life of the plugin.  -->
   <id>org.intellij.sdk.inspection</id>
 
+  <!-- Text to display as name on Preferences/Settings | Plugin page -->
   <name>SDK: Inspection Sample Project</name>
-
-  <!-- The version of this plugin -->
-  <version>2.0.0</version>
-
-  <!-- Compatible with the following versions of IntelliJ Platform -->
-  <idea-version since-build="191"/>
 
   <!-- Product and plugin compatibility requirements - this inspects text, which is part of the lang module -->
   <depends>com.intellij.modules.lang</depends>
@@ -19,7 +15,7 @@
   <description>
     <![CDATA[
         Basic example of working with code inspections. Adds entry to <b>Preferences | Editor | Inspections | SDK | Example Tools</b>.
-      ]]>
+    ]]>
   </description>
   <change-notes>
     <![CDATA[
@@ -31,7 +27,7 @@
     ]]>
   </change-notes>
 
-   <!-- Text to display as company information on Preferences/Settings | Plugin page -->
+  <!-- Text to display as company information on Preferences/Settings | Plugin page -->
   <vendor url="https://plugins.jetbrains.com">IntelliJ Platform SDK</vendor>
 
   <extensions defaultExtensionNs="com.intellij">

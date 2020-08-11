@@ -1,6 +1,7 @@
 ---
 title: Navigating the PSI
 ---
+<!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
 There are three main ways to navigate the PSI: *top-down*, *bottom-up*, and using *references*. In the first scenario, 
 you have a PSI file or another higher-level element (for example, a method), and you need to find all elements that match a
@@ -11,7 +12,7 @@ the element in which it has been declared). Finally, *references* allow you to n
 [separate topic](psi_references.md).
 
 
-## Top-down navigation
+## Top-Down Navigation
 
 The most common way to perform top-down navigation is to use a *visitor*. To use a visitor, you create a class
 (usually an anonymous inner class) that extends the base visitor class, override the methods that handle the elements
@@ -40,7 +41,7 @@ all methods in a Java class, you can do that using a visitor, but a much easier 
 general-purpose, language-independent functions for PSI tree navigation, some of which (for example, `findChildrenOfType()`)
 perform top-down navigation.
 
-## Bottom-up navigation
+## Bottom-Up Navigation
 
 The starting point for bottom-up navigation is either a specific element in the PSI tree (for example, the result of
 resolving a reference), or an offset. If you have an offset, you can find the corresponding PSI element by calling
@@ -64,4 +65,4 @@ PsiClass containingClass = containingMethod.getContainingClass();
 ```
 
 To see how the navigation works in practice, please refer to the 
-[code sample](https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/psi_demo/src/com/intellij/tutorials/psi/PsiNavigationDemoAction.java).
+[code sample](https://github.com/JetBrains/intellij-sdk-docs/blob/master/code_samples/psi_demo/src/main/java/org/intellij/sdk/psi/PsiNavigationDemoAction.java).

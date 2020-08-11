@@ -1,15 +1,17 @@
-// Copyright 2000-2019 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+// Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
 
 package org.intellij.sdk.framework;
 
 import com.intellij.framework.FrameworkTypeEx;
-import com.intellij.framework.addSupport.*;
-import com.intellij.icons.AllIcons;
+import com.intellij.framework.addSupport.FrameworkSupportInModuleConfigurable;
+import com.intellij.framework.addSupport.FrameworkSupportInModuleProvider;
 import com.intellij.ide.util.frameworkSupport.FrameworkSupportModel;
-import com.intellij.openapi.module.*;
-import com.intellij.openapi.roots.*;
+import com.intellij.openapi.module.Module;
+import com.intellij.openapi.module.ModuleType;
+import com.intellij.openapi.roots.ModifiableModelsProvider;
+import com.intellij.openapi.roots.ModifiableRootModel;
 import icons.SdkIcons;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 
@@ -35,7 +37,7 @@ public class DemoFramework extends FrameworkTypeEx {
       @Override
       public FrameworkSupportInModuleConfigurable createConfigurable(@NotNull FrameworkSupportModel model) {
         return new FrameworkSupportInModuleConfigurable() {
-          @Nullable
+
           @Override
           public JComponent createComponent() {
             return new JCheckBox("SDK Extra Option");

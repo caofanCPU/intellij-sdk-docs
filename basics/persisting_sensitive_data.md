@@ -1,13 +1,15 @@
 ---
 title: Persisting Sensitive Data
 ---
+<!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
 
 The Credentials Store API allows you to securely store sensitive user data, like passwords, server URLs, etc.
 
-## How to use
+## How to Use
 Use [`PasswordSafe`](upsource:///platform/platform-api/src/com/intellij/ide/passwordSafe/PasswordSafe.kt) to work with credentials.
 
-### Retrieve stored credentials
+### Retrieve Stored Credentials
+
 ```java
     String key = null; // e.g. serverURL, accountID
     CredentialAttributes credentialAttributes = createCredentialAttributes(key);
@@ -25,13 +27,14 @@ Use [`PasswordSafe`](upsource:///platform/platform-api/src/com/intellij/ide/pass
     }    
 ```
 
-### Store credentials
+### Store Credentials
 
 ```java
     CredentialAttributes credentialAttributes = createCredentialAttributes(serverId); // see previous sample
     Credentials credentials = new Credentials(username, password);
     PasswordSafe.getInstance().set(credentialAttributes, credentials);
 ```
+
 To remove stored credentials, pass `null` for `credentials` parameter.
 
 ## Storage

@@ -1,10 +1,13 @@
-package org.intellij.sdk.facet;// Copyright 2000-2019 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+// Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+
+package org.intellij.sdk.facet;
 
 import com.intellij.facet.ui.FacetEditorContext;
 import com.intellij.facet.ui.FacetEditorTab;
 import com.intellij.facet.ui.FacetValidatorsManager;
 import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.util.Comparing;
+import com.intellij.openapi.util.text.StringUtil;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
@@ -13,9 +16,7 @@ import java.awt.*;
 
 /**
  * Provides the JPanel to be displayed in the facet UI.
- * Manages validation and modification of the org.intellij.sdk.facet.DemoFacet state.
- *
- * @author John Hake
+ * Manages validation and modification of the {@link DemoFacet} state.
  */
 public class DemoFacetEditorTab extends FacetEditorTab {
   private static final String FACET_PANEL_PROMPT = "Path To SDK: ";
@@ -73,8 +74,7 @@ public class DemoFacetEditorTab extends FacetEditorTab {
    */
   @Override
   public boolean isModified() {
-    boolean foo = !Comparing.equal(mySettings.getDemoFacetState(), myPath.getText().trim());
-    return foo;
+    return !StringUtil.equals(mySettings.getDemoFacetState(), myPath.getText().trim());
   }
   
   /**

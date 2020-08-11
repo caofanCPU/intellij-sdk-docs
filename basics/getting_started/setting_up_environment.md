@@ -1,6 +1,9 @@
 ---
 title: Setting Up a Development Environment
 ---
+<!-- Copyright 2000-2020 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
+
+> **NOTE** For new projects, it is highly recommended to use [Gradle](/tutorials/build_system.md).
 
 ### Preliminary Steps
 
@@ -20,7 +23,7 @@ To set up your plugin development environment:
 <br/>
 <br/>
 *  Specify the installation folder of *IntelliJ IDEA Community Edition* as the home directory.
-> **warning** You may use IntelliJ IDEA Ultimate as an alternative, but debugging the core code will only work with the *Community Edition*.
+> **WARNING** You may use IntelliJ IDEA Ultimate as an alternative, but debugging the core code will only work with the *Community Edition*.
 
    ![Set Home Directory](img/set_home_directory.png)
 <br/>
